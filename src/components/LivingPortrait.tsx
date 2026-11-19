@@ -21,7 +21,7 @@ export default function LivingPortrait() {
       const flyEl: SVGElement = fly
       const handEl: SVGElement = hand
 
-      const url = (fileName: string) => `/roshan-character/${fileName}`
+      const url = (fileName: string) => `/roshan-character/${fileName.replace('.png', '.webp')}`
 
       const IDS: Record<string, string> = {
         // === Eye gaze directions (16-point compass) ===
@@ -735,18 +735,41 @@ export default function LivingPortrait() {
         animId = requestAnimationFrame(frame)
 
         const take = async (n: string) => {
+          if (tex[n]) return
           const img = await load(n)
           if (img) upload(n, img)
         }
         await take('closed')
         await take('half')
-        const names = Object.keys(IDS).filter((n) => !['rest', 'closed', 'half'].includes(n))
-        let i = 0
-        await Promise.all(
-          Array.from({ length: 6 }, async () => {
-            while (i < names.length) await take(names[i++])
-          })
-        )
+
+        // Primary 8 eye gaze directions loaded right away for instant smooth tracking
+        const primaryGazes = ['right', 'left', 'up', 'down', 'upright', 'upleft', 'downleft', 'downright']
+        await Promise.all(primaryGazes.map(take))
+
+        // Remaining expressions loaded progressively when browser is idle to keep network completely free
+        const remaining = Object.keys(IDS).filter((n) => !['rest', 'closed', 'half', ...primaryGazes].includes(n))
+        const loadIdle = () => {
+          let idx = 0
+          const scheduleNext = () => {
+            if ('requestIdleCallback' in window) {
+              window.requestIdleCallback(async (deadline) => {
+                while (deadline.timeRemaining() > 5 && idx < remaining.length) {
+                  await take(remaining[idx++])
+                }
+                if (idx < remaining.length) scheduleNext()
+              })
+            } else {
+              setTimeout(async () => {
+                if (idx < remaining.length) {
+                  await take(remaining[idx++])
+                  scheduleNext()
+                }
+              }, 60)
+            }
+          }
+          scheduleNext()
+        }
+        setTimeout(loadIdle, 400)
       })()
 
       cleanup = () => {
@@ -773,7 +796,7 @@ export default function LivingPortrait() {
       <div className="hero-portrait-inner fade-in" id="magnetInner" style={{ '--fade-y': '30px' } as any} data-delay="600">
         <img
           id="faceFallback"
-          src="/roshan-character/33.png"
+          src="/roshan-character/33.webp"
           alt="Roshan Negi 3D Character"
         />
         <canvas id="faceGl" aria-hidden="true" />

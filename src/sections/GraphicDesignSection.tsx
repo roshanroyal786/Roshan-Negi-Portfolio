@@ -31,7 +31,7 @@ export default function GraphicDesignSection() {
 
   // Helper to get image path (local cached image with Google Drive thumbnail fallback)
   const getImgSrc = (g: PortfolioGraphic) => {
-    return `/graphics/${g.id}.png`
+    return `/graphics/${g.id}.webp`
   }
 
   const getFallbackSrc = (g: PortfolioGraphic) => {

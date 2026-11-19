@@ -121,7 +121,7 @@ export default function VideoEditsSection() {
                     loop
                     muted
                     playsInline
-                    preload="metadata"
+                    preload="none"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
                       const el = e.currentTarget
@@ -131,12 +131,11 @@ export default function VideoEditsSection() {
                     }}
                   />
                 ) : video.provider === 'youtube' ? (
-                  <iframe
-                    src={`https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&mute=1&loop=1&playlist=${video.id}&controls=0&modestbranding=1&rel=0&playsinline=1&enablejsapi=1`}
-                    title={video.title}
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    className="w-full h-full pointer-events-none scale-[1.05]"
+                  <img
+                    src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
+                    alt={video.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : (
                   <img

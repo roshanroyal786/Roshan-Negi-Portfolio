@@ -27,6 +27,21 @@ const tapeKeywords = [
 export default function MarqueeSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [offset, setOffset] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    if (!sectionRef.current) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { rootMargin: '350px' }
+    )
+    observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,15 +85,24 @@ export default function MarqueeSection() {
             key={`r1-${video.id}-${i}`}
             className="w-[340px] sm:w-[420px] h-[220px] sm:h-[270px] rounded-2xl overflow-hidden flex-shrink-0 relative bg-black border border-white/10 group"
           >
-            <video
-              src={video.videoSrc || ''}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
-            />
+            {isVisible && video.videoSrc ? (
+              <video
+                src={video.videoSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="none"
+                className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+              />
+            ) : (
+              <img
+                src={video.previewSrc}
+                alt={video.title}
+                loading="lazy"
+                className="w-full h-full object-cover rounded-2xl"
+              />
+            )}
             {/* Auto-loop badge & title tag */}
             <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-emerald-400 uppercase tracking-widest font-semibold flex items-center gap-1 border border-white/10">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -106,15 +130,24 @@ export default function MarqueeSection() {
             key={`r2-${video.id}-${i}`}
             className="w-[340px] sm:w-[420px] h-[220px] sm:h-[270px] rounded-2xl overflow-hidden flex-shrink-0 relative bg-black border border-white/10 group"
           >
-            <video
-              src={video.videoSrc || ''}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
-            />
+            {isVisible && video.videoSrc ? (
+              <video
+                src={video.videoSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="none"
+                className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+              />
+            ) : (
+              <img
+                src={video.previewSrc}
+                alt={video.title}
+                loading="lazy"
+                className="w-full h-full object-cover rounded-2xl"
+              />
+            )}
             {/* Auto-loop badge & title tag */}
             <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-emerald-400 uppercase tracking-widest font-semibold flex items-center gap-1 border border-white/10">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
