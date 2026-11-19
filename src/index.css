@@ -27,24 +27,24 @@ html, body, #root {
   position: absolute;
   left: 50%;
   z-index: 10;
-  width: 400px;
+  width: min(90vw, 380px);
   top: 50%;
   transform: translate(-50%, -50%);
   touch-action: pan-y;
 }
 @media (min-width: 640px) {
   .hero-portrait-wrap {
-    width: 500px;
+    width: 480px;
   }
 }
 @media (min-width: 768px) {
   .hero-portrait-wrap {
-    width: 600px;
+    width: 560px;
   }
 }
 @media (min-width: 1024px) {
   .hero-portrait-wrap {
-    width: clamp(640px, 78vh, 46vw);
+    width: clamp(580px, 75vh, 44vw);
   }
 }
 .hero-portrait-inner {

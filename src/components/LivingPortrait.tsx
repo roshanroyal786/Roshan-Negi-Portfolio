@@ -236,6 +236,11 @@ export default function LivingPortrait() {
         const imgData = ctx.getImageData(0, 0, w, h)
         const data = imgData.data
 
+        // If corners are already transparent (e.g. pre-processed PNG), return canvas directly
+        if (data[3] === 0 && data[(w - 1) * 4 + 3] === 0) {
+          return c
+        }
+
         const visited = new Uint8Array(w * h)
         const queue = new Int32Array(w * h)
         let head = 0

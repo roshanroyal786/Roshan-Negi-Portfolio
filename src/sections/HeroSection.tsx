@@ -100,9 +100,9 @@ export default function HeroSection() {
       )}
 
       {/* Hero Heading */}
-      <FadeIn delay={0.15} y={40} className="overflow-hidden mt-6 sm:mt-4 md:-mt-5 relative z-0">
+      <FadeIn delay={0.15} y={40} className="w-full text-center mt-6 sm:mt-4 md:-mt-2 relative z-0 px-4">
         <h1
-          className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw]"
+          className="hero-heading font-black uppercase tracking-tight leading-none text-center mx-auto text-[11vw] sm:text-[10vw] md:text-[9.5vw] lg:text-[9vw]"
         >
           Hi, i&apos;m roshan
         </h1>
@@ -120,10 +120,10 @@ export default function HeroSection() {
       <div className="flex justify-between items-end pb-7 sm:pb-8 md:pb-10 px-6 md:px-10 relative z-20">
         <FadeIn delay={0.35} y={20}>
           <p
-            className="font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[270px]"
-            style={{ color: '#D7E2EA', fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
+            className="font-light uppercase tracking-wide leading-snug max-w-[220px] sm:max-w-[300px] md:max-w-[360px]"
+            style={{ color: '#D7E2EA', fontSize: 'clamp(0.75rem, 1.3vw, 1.15rem)' }}
           >
-            a 3d creator driven by crafting striking and unforgettable projects
+            Graphic designer &amp; video editor crafting high-retention visual stories, kinetic motion &amp; bold designs
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20}>
