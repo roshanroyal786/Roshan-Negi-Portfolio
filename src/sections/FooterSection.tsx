@@ -14,66 +14,69 @@ export default function FooterSection() {
   return (
     <footer
       id="contact"
-      className="relative z-20 px-6 sm:px-10 py-20 sm:py-28 md:py-36 border-t border-white/10"
+      className="relative z-20 px-4 sm:px-8 md:px-10 py-12 sm:py-20 md:py-28 border-t border-white/10 w-full overflow-hidden"
       style={{ background: '#0C0C0C' }}
     >
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
         <FadeIn delay={0} y={30}>
-          <span className="text-xs sm:text-sm uppercase tracking-widest text-[#BBCCD7]/60 block mb-3 font-medium">
+          <span className="text-xs sm:text-sm uppercase tracking-widest text-[#BBCCD7]/60 block mb-2 sm:mb-3 font-medium">
             Available for select projects
           </span>
           <h2
-            className="hero-heading font-black uppercase tracking-tight leading-tight mb-6"
-            style={{ fontSize: 'clamp(2.5rem, 8vw, 100px)' }}
+            className="hero-heading font-black uppercase tracking-tight leading-tight mb-4 sm:mb-6"
+            style={{ fontSize: 'clamp(1.8rem, 6.5vw, 90px)' }}
           >
             Ready to make the next frame count?
           </h2>
-          <p className="text-base sm:text-lg text-[#D7E2EA]/70 max-w-2xl font-light leading-relaxed mb-10 mx-auto">
+          <p className="text-xs sm:text-base md:text-lg text-[#D7E2EA]/70 max-w-2xl font-light leading-relaxed mb-6 sm:mb-10 mx-auto px-2 sm:px-0">
             Bring the raw clip, rough idea, or visual brief. I&apos;ll help turn it into work that feels clear, considered, and worth watching.
           </p>
         </FadeIn>
 
         {/* Action Buttons */}
-        <FadeIn delay={0.2} y={20} className="flex flex-wrap justify-center gap-4 mb-16">
-          <ContactButton href="https://wa.me/919871167707" text="Start a conversation" />
+        <FadeIn delay={0.2} y={20} className="w-full max-w-md sm:max-w-none flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-4 mb-10 sm:mb-16 mx-auto">
+          <ContactButton href="https://wa.me/919871167707" text="Start a conversation" className="w-full sm:w-auto" />
           <a
             href="mailto:roshanroyal786@gmail.com"
-            className="rounded-full border-2 border-[#D7E2EA] px-8 py-3 sm:px-10 sm:py-3.5 text-xs sm:text-sm md:text-base font-medium uppercase tracking-widest cursor-pointer hover:bg-[#D7E2EA]/10 transition-colors duration-200 text-[#D7E2EA] flex items-center gap-2"
+            className="w-full sm:w-auto rounded-full border-2 border-[#D7E2EA] px-6 py-2.5 sm:px-8 sm:py-3.5 text-xs sm:text-sm md:text-base font-medium uppercase tracking-widest cursor-pointer hover:bg-[#D7E2EA]/10 transition-colors duration-200 text-[#D7E2EA] flex items-center justify-center gap-2"
           >
-            <Mail size={16} />
+            <Mail size={15} />
             roshanroyal786@gmail.com
           </a>
           <a
             href="tel:+919871167707"
-            className="rounded-full border-2 border-[#D7E2EA] px-8 py-3 sm:px-10 sm:py-3.5 text-xs sm:text-sm md:text-base font-medium uppercase tracking-widest cursor-pointer hover:bg-[#D7E2EA]/10 transition-colors duration-200 text-[#D7E2EA] flex items-center gap-2"
+            className="w-full sm:w-auto rounded-full border-2 border-[#D7E2EA] px-6 py-2.5 sm:px-8 sm:py-3.5 text-xs sm:text-sm md:text-base font-medium uppercase tracking-widest cursor-pointer hover:bg-[#D7E2EA]/10 transition-colors duration-200 text-[#D7E2EA] flex items-center justify-center gap-2"
           >
-            <Phone size={16} />
+            <Phone size={15} />
             +91 9871167707
           </a>
         </FadeIn>
 
         {/* Portfolio & Socials Grid */}
         <FadeIn delay={0.3} y={20} className="w-full">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 pt-10 border-t border-white/10 text-left">
-            {socialLinks.map((item) => {
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 sm:gap-4 pt-6 sm:pt-10 border-t border-white/10 text-left">
+            {socialLinks.map((item, idx) => {
               const Icon = item.icon
+              const isLastOnMobile = idx === socialLinks.length - 1
               return (
                 <a
                   key={item.label}
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/5 transition-all duration-200 group flex flex-col justify-between"
+                  className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/5 transition-all duration-200 group flex flex-col justify-between ${
+                    isLastOnMobile ? 'col-span-2 sm:col-span-1' : ''
+                  }`}
                 >
-                  <div className="flex items-center justify-between mb-3 text-[#BBCCD7]/60 group-hover:text-white">
-                    <Icon size={18} />
-                    <ArrowUpRight size={14} className="opacity-40 group-hover:opacity-100 transition-opacity" />
+                  <div className="flex items-center justify-between mb-2 sm:mb-3 text-[#BBCCD7]/60 group-hover:text-white">
+                    <Icon size={16} />
+                    <ArrowUpRight size={13} className="opacity-40 group-hover:opacity-100 transition-opacity" />
                   </div>
                   <div>
-                    <span className="block text-xs uppercase tracking-wider text-[#BBCCD7] font-semibold">
+                    <span className="block text-[11px] sm:text-xs uppercase tracking-wider text-[#BBCCD7] font-semibold">
                       {item.label}
                     </span>
-                    <span className="block text-[11px] text-[#BBCCD7]/50 truncate mt-0.5">
+                    <span className="block text-[10px] sm:text-[11px] text-[#BBCCD7]/50 truncate mt-0.5">
                       {item.handle}
                     </span>
                   </div>
@@ -84,8 +87,8 @@ export default function FooterSection() {
         </FadeIn>
 
         {/* Footer bottom bar */}
-        <div className="w-full mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-[#BBCCD7]/50 gap-4">
-          <div className="flex items-center gap-2">
+        <div className="w-full mt-10 sm:mt-16 pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-[#BBCCD7]/50 gap-2.5 sm:gap-4 text-center sm:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
             <a
               href="#"
               onClick={(e) => {
@@ -96,9 +99,10 @@ export default function FooterSection() {
             >
               Roshan Negi
             </a>
-            <span>· Graphic Designer &amp; Video Editor · New Delhi, India</span>
+            <span className="hidden sm:inline">·</span>
+            <span className="text-[11px] sm:text-xs">Graphic Designer &amp; Video Editor · New Delhi</span>
           </div>
-          <div>© {new Date().getFullYear()} Roshan Negi · All rights reserved</div>
+          <div className="text-[11px] sm:text-xs">© {new Date().getFullYear()} Roshan Negi · All rights reserved</div>
         </div>
       </div>
     </footer>

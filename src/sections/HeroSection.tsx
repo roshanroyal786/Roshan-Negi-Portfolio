@@ -16,7 +16,7 @@ export default function HeroSection() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <section className="h-screen flex flex-col relative" style={{ overflowX: 'clip' }}>
+    <section className="h-[100dvh] min-h-[580px] flex flex-col relative w-full overflow-hidden">
       {/* Top Banner Tag */}
       <div className="absolute top-2 left-0 w-full text-center hidden md:block z-20 pointer-events-none">
         <span className="text-[11px] tracking-widest uppercase font-medium px-4 py-1 rounded-full bg-[#1A1A1A]/70 text-[#BBCCD7] border border-white/10">
@@ -26,7 +26,7 @@ export default function HeroSection() {
 
       {/* Navbar */}
       <FadeIn delay={0} y={-20}>
-        <nav className="flex items-center justify-between px-6 md:px-10 pt-6 md:pt-8 relative z-20">
+        <nav className="flex items-center justify-between px-5 sm:px-8 md:px-10 pt-5 sm:pt-6 md:pt-8 relative z-20">
           {/* Clickable Logo */}
           <a
             href="#"
@@ -65,7 +65,7 @@ export default function HeroSection() {
             className="md:hidden p-2 text-[#D7E2EA] hover:text-white transition-colors z-30"
             aria-label="Open menu"
           >
-            <Menu size={28} />
+            <Menu size={26} />
           </button>
         </nav>
       </FadeIn>
@@ -100,9 +100,9 @@ export default function HeroSection() {
       )}
 
       {/* Hero Heading */}
-      <FadeIn delay={0.15} y={40} className="w-full text-center mt-6 sm:mt-4 md:-mt-2 relative z-0 px-4">
+      <FadeIn delay={0.15} y={40} className="w-full text-center mt-3 sm:mt-4 md:-mt-2 relative z-0 px-4">
         <h1
-          className="hero-heading font-black uppercase tracking-tight leading-none text-center mx-auto text-[11vw] sm:text-[10vw] md:text-[9.5vw] lg:text-[9vw]"
+          className="hero-heading font-black uppercase tracking-tight leading-none text-center mx-auto text-[10vw] sm:text-[9.5vw] md:text-[9vw]"
         >
           Hi, i&apos;m roshan
         </h1>
@@ -117,11 +117,11 @@ export default function HeroSection() {
       <div className="flex-1" />
 
       {/* Bottom bar */}
-      <div className="flex justify-between items-end pb-7 sm:pb-8 md:pb-10 px-6 md:px-10 relative z-20">
+      <div className="flex flex-col sm:flex-row items-center sm:items-end justify-between gap-3 sm:gap-4 pb-6 sm:pb-8 md:pb-10 px-5 sm:px-8 md:px-10 relative z-20 text-center sm:text-left">
         <FadeIn delay={0.35} y={20}>
           <p
-            className="font-light uppercase tracking-wide leading-snug max-w-[220px] sm:max-w-[300px] md:max-w-[360px]"
-            style={{ color: '#D7E2EA', fontSize: 'clamp(0.75rem, 1.3vw, 1.15rem)' }}
+            className="font-light uppercase tracking-wide leading-snug max-w-[320px] sm:max-w-[300px] md:max-w-[360px] mx-auto sm:mx-0 text-xs sm:text-sm md:text-base"
+            style={{ color: '#D7E2EA' }}
           >
             Graphic designer &amp; video editor crafting high-retention visual stories, kinetic motion &amp; bold designs
           </p>

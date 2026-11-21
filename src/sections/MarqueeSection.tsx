@@ -58,13 +58,13 @@ export default function MarqueeSection() {
   return (
     <section
       ref={sectionRef}
-      className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden"
+      className="pt-10 sm:pt-20 md:pt-32 pb-6 sm:pb-10 overflow-hidden w-full"
       style={{ background: '#0C0C0C' }}
     >
       {/* Dynamic Ribbon from Roshan's site */}
-      <div className="mb-6 overflow-hidden py-2 border-y border-white/10 opacity-70">
+      <div className="mb-4 sm:mb-6 overflow-hidden py-2 border-y border-white/10 opacity-70">
         <div
-          className="flex gap-6 whitespace-nowrap text-xs sm:text-sm uppercase tracking-widest font-medium text-[#BBCCD7]"
+          className="flex gap-4 sm:gap-6 whitespace-nowrap text-xs sm:text-sm uppercase tracking-widest font-medium text-[#BBCCD7]"
           style={{ transform: `translateX(${-offset * 0.5}px)`, willChange: 'transform' }}
         >
           {[...tapeKeywords, ...tapeKeywords, ...tapeKeywords, ...tapeKeywords].map((word, idx) => (
@@ -77,13 +77,13 @@ export default function MarqueeSection() {
 
       {/* Row 1 - moves RIGHT: Real Auto-Looping Video Edits */}
       <div
-        className="flex gap-3 mb-3"
+        className="flex gap-2.5 sm:gap-3 mb-2.5 sm:mb-3"
         style={{ transform: `translateX(${offset - 200}px)`, willChange: 'transform' }}
       >
         {row1Tripled.map((video, i) => (
           <div
             key={`r1-${video.id}-${i}`}
-            className="w-[340px] sm:w-[420px] h-[220px] sm:h-[270px] rounded-2xl overflow-hidden flex-shrink-0 relative bg-black border border-white/10 group"
+            className="w-[250px] sm:w-[360px] md:w-[420px] h-[160px] sm:h-[230px] md:h-[270px] rounded-2xl overflow-hidden flex-shrink-0 relative bg-black border border-white/10 group"
           >
             {isVisible && video.videoSrc ? (
               <video
@@ -104,15 +104,15 @@ export default function MarqueeSection() {
               />
             )}
             {/* Auto-loop badge & title tag */}
-            <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-emerald-400 uppercase tracking-widest font-semibold flex items-center gap-1 border border-white/10">
+            <div className="absolute top-2.5 sm:top-3 left-2.5 sm:left-3 bg-black/60 backdrop-blur-md px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] text-emerald-400 uppercase tracking-widest font-semibold flex items-center gap-1 border border-white/10">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Auto-Loop
             </div>
-            <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-              <span className="text-[10px] text-[#BBCCD7]/70 uppercase tracking-widest block font-medium">
+            <div className="absolute bottom-0 inset-x-0 p-2.5 sm:p-3 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+              <span className="text-[9px] sm:text-[10px] text-[#BBCCD7]/70 uppercase tracking-widest block font-medium">
                 {video.origin}
               </span>
-              <span className="text-xs text-[#D7E2EA] uppercase font-bold truncate block">
+              <span className="text-[11px] sm:text-xs text-[#D7E2EA] uppercase font-bold truncate block">
                 {video.title}
               </span>
             </div>
@@ -122,13 +122,13 @@ export default function MarqueeSection() {
 
       {/* Row 2 - moves LEFT: Real Auto-Looping Video Edits */}
       <div
-        className="flex gap-3"
+        className="flex gap-2.5 sm:gap-3"
         style={{ transform: `translateX(${-(offset - 200)}px)`, willChange: 'transform' }}
       >
         {row2Tripled.map((video, i) => (
           <div
             key={`r2-${video.id}-${i}`}
-            className="w-[340px] sm:w-[420px] h-[220px] sm:h-[270px] rounded-2xl overflow-hidden flex-shrink-0 relative bg-black border border-white/10 group"
+            className="w-[250px] sm:w-[360px] md:w-[420px] h-[160px] sm:h-[230px] md:h-[270px] rounded-2xl overflow-hidden flex-shrink-0 relative bg-black border border-white/10 group"
           >
             {isVisible && video.videoSrc ? (
               <video
@@ -149,15 +149,15 @@ export default function MarqueeSection() {
               />
             )}
             {/* Auto-loop badge & title tag */}
-            <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] text-emerald-400 uppercase tracking-widest font-semibold flex items-center gap-1 border border-white/10">
+            <div className="absolute top-2.5 sm:top-3 left-2.5 sm:left-3 bg-black/60 backdrop-blur-md px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] text-emerald-400 uppercase tracking-widest font-semibold flex items-center gap-1 border border-white/10">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Auto-Loop
             </div>
-            <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-              <span className="text-[10px] text-[#BBCCD7]/70 uppercase tracking-widest block font-medium">
+            <div className="absolute bottom-0 inset-x-0 p-2.5 sm:p-3 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+              <span className="text-[9px] sm:text-[10px] text-[#BBCCD7]/70 uppercase tracking-widest block font-medium">
                 {video.origin}
               </span>
-              <span className="text-xs text-[#D7E2EA] uppercase font-bold truncate block">
+              <span className="text-[11px] sm:text-xs text-[#D7E2EA] uppercase font-bold truncate block">
                 {video.title}
               </span>
             </div>

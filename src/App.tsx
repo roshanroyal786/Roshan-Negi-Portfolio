@@ -8,7 +8,7 @@ import FooterSection from './sections/FooterSection'
 
 function App() {
   return (
-    <div style={{ overflowX: 'clip', background: '#0C0C0C', fontFamily: "'Kanit', sans-serif" }}>
+    <div className="w-full overflow-x-hidden min-h-screen" style={{ overflowX: 'clip', background: '#0C0C0C', fontFamily: "'Kanit', sans-serif" }}>
       <HeroSection />
       <MarqueeSection />
       <AboutSection />
